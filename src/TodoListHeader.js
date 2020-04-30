@@ -9,7 +9,6 @@ class TodoListHeader extends React.Component {
     }
 
 
-
     onAddTaskClick = () => {
         // let newText = this.newTasksTitileRef.current.value;
         let newText = this.state.title.trim();
@@ -23,21 +22,17 @@ class TodoListHeader extends React.Component {
                 title: ''
             })
         }
-
-
     }
 
     onTitleChanged = (e) => {
         this.setState({
             error: false,
-        title: e.currentTarget.value
-
+            title: e.currentTarget.value
         })
-
     }
 
     onKeyPress = (e) => {
-        if(e.key === 'Enter') {
+        if (e.key === 'Enter') {
             this.onAddTaskClick();
         }
     }
@@ -56,7 +51,7 @@ class TodoListHeader extends React.Component {
                         onKeyPress={this.onKeyPress}
                         className={errorClass}
                         type="text"
-                        placeholder="New task name" />
+                        placeholder="New task name"/>
 
                     <button onClick={this.onAddTaskClick}>Add</button>
                 </div>
