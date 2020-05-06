@@ -13,66 +13,101 @@ class App extends React.Component {
 
     state = {
         tasks: [
-            {title: "JS", isDone: true, priority: "medium"},
-            {title: "HTML", isDone: true, priority: "low"},
-            {title: "CSS", isDone: true, priority: "low"},
-            {title: "ReactJS", isDone: false, priority: "high"}
+            // {id: 0, title: "JS", isDone: true, priority: "medium"},
+            // {id: 1, title: "HTML", isDone: true, priority: "low"},
+            // {id: 2, title: "CSS", isDone: true, priority: "low"},
+            // {id: 3, title: "ReactJS", isDone: false, priority: "high"}
         ],
         filterValue: "All"
     };
+    nextTaskId = 1
+
+    saveState = () => {
+        let stateAsString = JSON.stringify(this.state)
+        localStorage.setItem('state', stateAsString)
+    }
+
+    restoreState = () => {
+        let state = {
+            tasks: [],
+            filterValue: 'All'
+        };
+        let stateAsString = localStorage.getItem('state');
+        if (stateAsString){
+            state = JSON.parse(stateAsString);
+        }
+        this.setState(state, ()=>{
+            this.state.tasks.forEach(t =>{
+                if(t.id >= this.nextTaskId){
+                    this.nextTaskId = t.id +1
+                }
+            })
+        });
+    }
+
+    componentDidMount() {
+        this.restoreState();
+    }
 
     addTask = (newTitle) => {
         let newTask = {
             title: newTitle,
             isDone: false,
-            priority: "low"
+            priority: "low",
+            id: this.nextTaskId
         };
+        this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
-        this.setState( {
-            tasks: newTasks
-        });
+        this.setState({tasks: newTasks}, this.saveState);
+
     }
 
     changeFilter = (newFilterValue) => {
-        this.setState( {
+        this.setState({
             filterValue: newFilterValue
         });
     }
 
-    changeStatus = (task, isDone) => {
+    changeTask = (taskId, obj) => {
         let newTasks = this.state.tasks.map(t => {
-            if (t != task) {
-                return t;
-            }
-            else {
-                return {...t, isDone: isDone};
+            if (t.id === taskId) {
+                return {...t, ...obj};
+            } else {
+                return t
             }
         });
-        this.setState({
-            tasks: newTasks
-        })
 
+        this.setState({tasks: newTasks}, this.saveState);
     }
+
+    changeStatus = (taskId, isDone) => {
+            this.changeTask(taskId, {isDone: isDone})
+    };
+
+    changeTitle = (taskId, title) => {
+    this.changeTask(taskId, {title: title})
+     };
 
     render = () => {
 
         return (
             <div className="App">
                 <div className="todoList">
-                    <TodoListHeader addTask={this.addTask} />
-                    <TodoListTasks changeStatus={this.changeStatus }
+                    <TodoListHeader addTask={this.addTask}/>
+                    <TodoListTasks changeStatus={this.changeStatus}
+                                   changeTitle={this.changeTitle}
                                    tasks={this.state.tasks.filter(t => {
-                        if (this.state.filterValue === "All") {
-                            return true;
-                        }
-                        if (this.state.filterValue === "Active") {
-                            return t.isDone === false;
-                        }
-                        if (this.state.filterValue === "Completed") {
-                            return t.isDone === true;
-                        }
-                    })}/>
-                    <TodoListFooter changeFilter={this.changeFilter} filterValue={this.state.filterValue} />
+                                       if (this.state.filterValue === "All") {
+                                           return true;
+                                       }
+                                       if (this.state.filterValue === "Active") {
+                                           return t.isDone === false;
+                                       }
+                                       if (this.state.filterValue === "Completed") {
+                                           return t.isDone === true;
+                                       }
+                                   })}/>
+                    <TodoListFooter changeFilter={this.changeFilter} filterValue={this.state.filterValue}/>
                 </div>
             </div>
         );
