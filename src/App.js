@@ -69,10 +69,9 @@ class App extends React.Component {
                 {/*<TodoList id={2}/>*/}
             </div>
                 </>
-
         )
     }
-}
+};
 
 
 export default App;

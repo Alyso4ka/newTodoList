@@ -19,14 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="todolist #6">
-      <change afterPath="$PROJECT_DIR$/src/AddNewItemForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TodoListTitle.js" afterDir="false" />
+    <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="todolist #7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TodoListHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoListHeader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,8 @@
       <workItem from="1588690031497" duration="10791000" />
       <workItem from="1588750585904" duration="1961000" />
       <workItem from="1588837083356" duration="435000" />
-      <workItem from="1589295453945" duration="11763000" />
+      <workItem from="1589295453945" duration="12257000" />
+      <workItem from="1589346027514" duration="1093000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring todolist #5">
       <created>1588233924432</created>
@@ -102,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588837459177</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="todolist #7">
+      <created>1589308593591</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589308593591</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +126,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring todolist #5" />
     <MESSAGE value="todolist #6" />
-    <option name="LAST_COMMIT_MESSAGE" value="todolist #6" />
+    <MESSAGE value="todolist #7" />
+    <option name="LAST_COMMIT_MESSAGE" value="todolist #7" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588837523705">
@@ -138,10 +142,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1311" y="223" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588149621786" />
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1588837480602">
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1589308626958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588837480602" />
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589308626958" />
     <state x="1218" y="207" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588087599948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -150,5 +154,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1083" y="228" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588087760829" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/App.js</url>
+          <line>32</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
