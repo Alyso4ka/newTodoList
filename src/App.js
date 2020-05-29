@@ -62,19 +62,20 @@ class App extends React.Component {
                     <AddNewItemForm addItem={this.addTodoList}/>
 
                 </div>
-            <div className='App'>
+                <div className='App'>
 
-                {todolists}
-                {/*<TodoList id={1}/>*/}
-                {/*<TodoList id={2}/>*/}
-            </div>
-                </>
+                    {todolists}
+                    {/*<TodoList id={1}/>*/}
+                    {/*<TodoList id={2}/>*/}
+                </div>
+            </>
         )
     }
 };
 
 
 export default App;
+
 
 
 
