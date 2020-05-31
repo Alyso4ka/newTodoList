@@ -1,7 +1,12 @@
 import {createStore} from "redux";
 
 const initialState = {
-    todolists: []
+    todolists: [
+        {'id': 0, 'title': 'every day'},
+        {'id': 1, 'title': 'tomorrow'},
+        {'id': 2, 'title': 'next week'}
+
+    ]
 }
 
 const reducer = (state = initialState, action) => {
