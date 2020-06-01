@@ -82,7 +82,21 @@ const mapStateToProps = (state) => {
         todolists: state.todolists
     }
 }
-const ConnectedApp = connect(mapStateToProps)(App);
+
+const mapDispatchtoProps = (dispatch) => {
+   return {
+       addTodolist: (newTodolist) => {
+           const action = {
+               type: 'ADD-TODOLIST',
+               newTodolist: newTodolist
+           };
+           dispatch(action)
+       }
+   }
+}
+
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchtoProps)(App);
 export default ConnectedApp;
 
 
