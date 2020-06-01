@@ -13,16 +13,17 @@ class App extends React.Component {
             {id: 4, title: 'React'},
         ]
     }
-    nextTodoId = 0;
+    nextTodoId = 3;
 
     addTodoList = (newTitle) => {
-        let newTodo = {
+        let newTodolist = {
             title: newTitle,
             id: this.nextTodoId
         };
+        this.props.addTodolist(newTodolist);
         this.nextTodoId++;
-        let newTodos = [...this.state.todolists, newTodo];
-        this.setState({todolists: newTodos}, this.saveState);
+        // let newTodos = [...this.state.todolists, newTodo];
+        // this.setState({todolists: newTodos}, this.saveState);
 
     }
 
@@ -83,20 +84,23 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchtoProps = (dispatch) => {
-   return {
-       addTodolist: (newTodolist) => {
-           const action = {
-               type: 'ADD-TODOLIST',
-               newTodolist: newTodolist
-           };
-           dispatch(action)
-       }
-   }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodolist: (newTodolist) => {
+            const action = {
+                type: "ADD-TODOLIST",
+                newTodolist: newTodolist
+            };
+
+            dispatch(action)
+        }
+    }
 }
 
 
-const ConnectedApp = connect(mapStateToProps, mapDispatchtoProps)(App);
+
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 export default ConnectedApp;
 
 
