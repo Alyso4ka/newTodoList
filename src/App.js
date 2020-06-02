@@ -24,7 +24,6 @@ class App extends React.Component {
         this.nextTodoId++;
         // let newTodos = [...this.state.todolists, newTodo];
         // this.setState({todolists: newTodos}, this.saveState);
-
     }
 
     saveState = () => {
@@ -76,8 +75,6 @@ class App extends React.Component {
 };
 
 
-
-
 const mapStateToProps = (state) => {
     return {
         todolists: state.todolists
@@ -96,8 +93,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-
 
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
