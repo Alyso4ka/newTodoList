@@ -14,36 +14,11 @@ class App extends React.Component {
     }
 
     state = {
-        tasks: [],
         filterValue: "All"
     };
-    nextTaskId = 1
-
-    saveState = () => {
-        let stateAsString = JSON.stringify(this.state)
-        localStorage.setItem('state' + this.props.id, stateAsString)
-    }
-
-    restoreState = () => {
-        let state = {
-            tasks: [],
-            filterValue: 'All'
-        };
-        let stateAsString = localStorage.getItem('state' + this.props.id);
-        if (stateAsString) {
-            state = JSON.parse(stateAsString);
-        }
-        this.setState(state, () => {
-            this.state.tasks.forEach(t => {
-                if (t.id >= this.nextTaskId) {
-                    this.nextTaskId = t.id + 1
-                }
-            })
-        });
-    }
 
     componentDidMount() {
-        this.restoreState();
+
     }
 
     addTask = (newTitle) => {
@@ -54,8 +29,9 @@ class App extends React.Component {
             id: this.nextTaskId
         };
         this.nextTaskId++;
-        let newTasks = [...this.state.tasks, newTask];
-        this.setState({tasks: newTasks}, this.saveState);
+        this.props.addTask(newTask, this.props.id);
+
+
 
     }
 
@@ -98,7 +74,7 @@ class App extends React.Component {
                 {/*<TodoListHeader addTask={this.addTask} title={this.props.title}/>*/}
                 <TodoListTasks changeStatus={this.changeStatus}
                                changeTitle={this.changeTitle}
-                               tasks={this.state.tasks.filter(t => {
+                               tasks={this.props.tasks.filter(t => {
                                    if (this.state.filterValue === "All") {
                                        return true;
                                    }

@@ -21,6 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="add todolists with action">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +94,9 @@
       <workItem from="1590936230322" duration="649000" />
       <workItem from="1590997870402" duration="2733000" />
       <workItem from="1591005495487" duration="392000" />
-      <workItem from="1591090407545" duration="320000" />
+      <workItem from="1591090407545" duration="449000" />
+      <workItem from="1591094966253" duration="79000" />
+      <workItem from="1591170517235" duration="7803000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring todolist #5">
       <created>1588233924432</created>
@@ -162,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591000643439</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add todolists with action">
+      <created>1591090838991</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1591090838991</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,10 +205,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="add todolists with action" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591005888364">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591095048111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591005888364" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591095048111" />
     <state x="1326" y="416" key="Github.ShareDialog" timestamp="1588149506900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -204,10 +217,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1311" y="223" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588149621786" />
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1591000651946">
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1591090843865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591000651946" />
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591090843865" />
     <state x="1218" y="207" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588087599948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -222,7 +235,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App.js</url>
-          <line>104</line>
+          <line>80</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -5,60 +5,29 @@ import AddNewItemForm from "./AddNewItemForm";
 import {connect} from "react-redux";
 
 class App extends React.Component {
-    state = {
-        todolists: [
-            {id: 1, title: 'JS'},
-            {id: 2, title: 'Angular'},
-            {id: 3, title: 'Redux'},
-            {id: 4, title: 'React'},
-        ]
-    }
-    nextTodoId = 3;
 
     addTodoList = (newTitle) => {
-        let newTodolist = {
-            title: newTitle,
-            id: this.nextTodoId
-        };
-        this.props.addTodolist(newTodolist);
-        this.nextTodoId++;
-        // let newTodos = [...this.state.todolists, newTodo];
-        // this.setState({todolists: newTodos}, this.saveState);
-    }
-
-    saveState = () => {
-        let stateAsString = JSON.stringify(this.state)
-        localStorage.setItem('todolists', stateAsString)
-    }
-
-    restoreState = () => {
-        let state = {
-            todolists: [],
-
-        };
-        let stateAsString = localStorage.getItem('todolists');
-        if (stateAsString) {
-            state = JSON.parse(stateAsString);
-        }
-        this.setState(state, () => {
-            this.state.todolists.forEach(t => {
-                if (t.id >= this.nextTodoId) {
-                    this.nextTodoId = t.id + 1
-                }
-            })
-        });
+        this.props.addTodolist(newTitle);
     }
 
     componentDidMount() {
-        this.restoreState();
+        // this.restoreState();
     }
 
     render = () => {
-        const todolists = this.props.todolists.map(t => {
-            return <TodoList key={t.id} id={t.id} title={t.title}/>
+        const todolists = this.props
+            .todolists
+            .map(t => {
+            return <TodoList
+                key={t.id}
+                id={t.id}
+                title={t.title}
+                tasks={t.tasks}
+                addTask={this.props.addTask}/>
         })
         return (
             <>
+
                 <div>
                     <AddNewItemForm addItem={this.addTodoList}/>
 
@@ -78,15 +47,27 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return {
         todolists: state.todolists
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addTodolist: (newTodolist) => {
+        addTodolist: (newTitle) => {
             const action = {
                 type: "ADD-TODOLIST",
-                newTodolist: newTodolist
+                newTitle: newTitle
+            };
+
+            dispatch(action)
+        },
+
+        addTask: (task, todolistId) => {
+            const action = {
+                type: "ADD-TASK",
+                newTask: task,
+                todolistId: todolistId
+
             };
 
             dispatch(action)
