@@ -23,7 +23,9 @@ class App extends React.Component {
                 id={t.id}
                 title={t.title}
                 tasks={t.tasks}
-                addTask={this.props.addTask}/>
+                addTask={this.props.addTask}
+                changeTask={this.props.changeTask}
+            />
         })
         return (
             <>
@@ -62,15 +64,24 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(action)
         },
 
-        addTask: (task, todolistId) => {
+        addTask: (newTitle, todolistId) => {
             const action = {
                 type: "ADD-TASK",
-                newTask: task,
+                newText: newTitle,
                 todolistId: todolistId
 
             };
 
             dispatch(action)
+        },
+        changeTask: (taskId, obj) => {
+            const action = {
+                type: "CHANGE-TASK",
+                taskId: taskId,
+                delta: obj
+            };
+            dispatch(action)
+
         }
     }
 }

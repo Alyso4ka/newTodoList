@@ -21,18 +21,8 @@ class App extends React.Component {
 
     }
 
-    addTask = (newTitle) => {
-        let newTask = {
-            title: newTitle,
-            isDone: false,
-            priority: "low",
-            id: this.nextTaskId
-        };
-        this.nextTaskId++;
-        this.props.addTask(newTask, this.props.id);
-
-
-
+    addTask = (newText) => {
+        this.props.addTask(newText, this.props.id);
     }
 
     changeFilter = (newFilterValue) => {
@@ -42,16 +32,20 @@ class App extends React.Component {
     }
 
     changeTask = (taskId, obj) => {
-        let newTasks = this.state.tasks.map(t => {
-            if (t.id === taskId) {
-                return {...t, ...obj};
-            } else {
-                return t
-            }
-        });
+    //     let newTasks = this.props.tasks.map(t => {
+    //         if (t.id === taskId) {
+    //             return {...t, ...obj};
+    //         } else {
+    //             return t
+    //         }
+    //     });
+    //
+    //
+        this.props.changeTask(taskId, obj);
 
-        this.setState({tasks: newTasks}, this.saveState);
-    }
+     }
+
+
 
     changeStatus = (taskId, isDone) => {
         this.changeTask(taskId, {isDone: isDone})

@@ -29,13 +29,21 @@ const reducer = (state = initialState, action) => {
                 todolists: [newTodoList, ...state.todolists]
             }
         case 'ADD-TASK':
+
+            let newTask = {
+                title: action.newText,
+                isDone: false,
+                priority: "low",
+                id: (new Date()).getTime(),
+            };
+
             return {
                 ...state,
                 todolists: state.todolists.map( t => {
                     if (action.todolistId == t.id) {
                         return {
                             ...t,
-                            tasks: [action.newTask, ...t.tasks]
+                            tasks: [newTask, ...t.tasks]
                         }
                     } else {
                         return t;
@@ -45,6 +53,12 @@ const reducer = (state = initialState, action) => {
             }
 
             return state;
+        case 'CHANGE-TASK':
+
+            return {
+                ...state,
+                todolists:
+            }
 
     }
 
