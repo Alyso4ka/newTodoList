@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TodoListTask from "./TodoListTask";
+import {connect} from "react-redux";
 
 class TodoListTasks extends React.Component {
     render = () => {
@@ -9,6 +10,9 @@ class TodoListTasks extends React.Component {
             task={task}
             changeStatus={this.props.changeStatus}
             changeTitle={this.props.changeTitle}
+            key={task.id}
+            deleteTask={this.props.deleteTask}
+            todolistId={this.props.todolistId}
         />);
 
         return (
@@ -20,5 +24,26 @@ class TodoListTasks extends React.Component {
     }
 }
 
-export default TodoListTasks;
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteTask: (taskId, todolistId) => {
+            const action = {
+                type: "DELETE-TASK",
+                taskId: taskId,
+                todolistId: todolistId
+            };
+            dispatch(action)
+        },
+
+    }
+}
+
+
+const ConnectedTodoListTasks = connect(mapStateToProps, mapDispatchToProps)(TodoListTasks);
+export default ConnectedTodoListTasks;
+
 

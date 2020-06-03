@@ -8,10 +8,6 @@ import AddNewItemForm from "./AddNewItemForm";
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.newTasksTitileRef = React.createRef();
-    }
 
     state = {
         filterValue: "All"
@@ -32,18 +28,8 @@ class App extends React.Component {
     }
 
     changeTask = (taskId, obj) => {
-    //     let newTasks = this.props.tasks.map(t => {
-    //         if (t.id === taskId) {
-    //             return {...t, ...obj};
-    //         } else {
-    //             return t
-    //         }
-    //     });
-    //
-    //
         this.props.changeTask(taskId, obj);
-
-     }
+    }
 
 
 
@@ -62,12 +48,15 @@ class App extends React.Component {
             <div className="todoList">
                 <div className="todoList-header">
 
-                    <TodoListTitle title={this.props.title}/>
+                    <TodoListTitle title={this.props.title}
+                    id={this.props.id}
+                    />
                     <AddNewItemForm addItem={this.addTask}/>
                 </div>
                 {/*<TodoListHeader addTask={this.addTask} title={this.props.title}/>*/}
                 <TodoListTasks changeStatus={this.changeStatus}
                                changeTitle={this.changeTitle}
+                               todolistId={this.props.id}
                                tasks={this.props.tasks.filter(t => {
                                    if (this.state.filterValue === "All") {
                                        return true;
@@ -88,3 +77,6 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+

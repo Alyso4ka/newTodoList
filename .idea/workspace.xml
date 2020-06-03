@@ -21,8 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="add todolists with action">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoListTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoListTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoListTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoListTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoListTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoListTitle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +98,8 @@
       <workItem from="1591090407545" duration="449000" />
       <workItem from="1591094966253" duration="79000" />
       <workItem from="1591170517235" duration="8066000" />
-      <workItem from="1591180548791" duration="2543000" />
+      <workItem from="1591180548791" duration="2696000" />
+      <workItem from="1591202248638" duration="3245000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring todolist #5">
       <created>1588233924432</created>
@@ -182,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591179452092</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add todolists with action">
+      <created>1591183219123</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1591183219123</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,10 +234,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1311" y="223" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588149621786" />
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1591179540216">
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2" timestamp="1591183228112">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591179540216" />
+    <state x="951" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591183228112" />
     <state x="1218" y="207" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588087599948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -247,9 +257,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/TodoList.js</url>
-          <line>53</line>
-          <properties lambdaOrdinal="-1" />
+          <line>39</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/store.js</url>
+          <line>57</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
