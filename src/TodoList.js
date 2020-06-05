@@ -70,8 +70,6 @@ class App extends React.Component {
                                })}/>
                 <TodoListFooter changeFilter={this.changeFilter} filterValue={this.state.filterValue}/>
             </div>
-
-
         );
     }
 }
