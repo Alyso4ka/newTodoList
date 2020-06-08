@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
+import {DELETE_TODOLIST} from "./reducer";
 
 
 
@@ -29,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         deleteTodolist: (id) => {
             const action = {
-                type: "DELETE-TODOLIST",
+                type: DELETE_TODOLIST,
                 id: id
             };
 
