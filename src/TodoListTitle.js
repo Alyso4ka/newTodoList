@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {DELETE_TODOLIST} from "./reducer";
+import {DELETE_TODOLIST, deleteTodolistAC} from "./reducer";
 
 
 
@@ -29,12 +29,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteTodolist: (id) => {
-            const action = {
-                type: DELETE_TODOLIST,
-                id: id
-            };
-
-            dispatch(action)
+            dispatch(deleteTodolistAC(id))
         },
 
     }

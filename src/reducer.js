@@ -102,3 +102,42 @@ export const reducer = (state = initialState, action) => {
 
     return state;
 }
+
+export const addTodolistAC = (todolist) => {
+    return{
+        type: ADD_TODOLIST,
+        newTodolist: todolist
+    };
+}
+
+export const addTaskAC = (newTitle, todolistId) => {
+    return {
+        type: ADD_TASK,
+        newText: newTitle,
+        todolistId: todolistId
+
+    };
+}
+
+export const changeTaskAC = (taskId, obj) => {
+    return {
+        type: CHANGE_TASK,
+        taskId: taskId,
+        delta: obj
+    };
+}
+
+export const deleteTodolistAC = (id) => {
+    return {
+        type: DELETE_TODOLIST,
+        id: id
+    };
+}
+
+export const deleteTaskAC = (taskId, todolistId) => {
+    return {
+        type: DELETE_TASK,
+        taskId: taskId,
+        todolistId: todolistId
+    };
+}

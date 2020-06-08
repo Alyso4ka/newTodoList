@@ -3,7 +3,7 @@ import './App.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
 import {connect} from "react-redux";
-import {ADD_TASK, ADD_TODOLIST, CHANGE_TASK, DELETE_TODOLIST} from "./reducer";
+import {addTaskAC, addTodolistAC, changeTaskAC, } from "./reducer";
 
 class App extends React.Component {
 
@@ -56,33 +56,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addTodolist: (newTitle) => {
-            const action = {
-                type: ADD_TODOLIST,
-                newTitle: newTitle
-            };
-
-            dispatch(action)
+        addTodolist: (newTodolist) => {
+            dispatch(addTodolistAC(newTodolist))
         },
 
 
         addTask: (newTitle, todolistId) => {
-            const action = {
-                type: ADD_TASK,
-                newText: newTitle,
-                todolistId: todolistId
-
-            };
-
-            dispatch(action)
+            dispatch(addTaskAC(newTitle, todolistId))
         },
         changeTask: (taskId, obj) => {
-            const action = {
-                type: CHANGE_TASK,
-                taskId: taskId,
-                delta: obj
-            };
-            dispatch(action)
+            dispatch(changeTaskAC(taskId, obj))
 
         }
     }
