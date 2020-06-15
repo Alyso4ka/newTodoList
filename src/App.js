@@ -3,7 +3,8 @@ import './App.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
 import {connect} from "react-redux";
-import {addTaskAC, addTodolistAC, changeTaskAC, } from "./reducer";
+import axios from 'axios';
+import {addTaskAC, addTodolistAC, changeTaskAC, setTodolistsAC,} from "./reducer";
 
 class App extends React.Component {
 
@@ -12,7 +13,32 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // this.restoreState();
+        // запрос на сервак
+        // const todolists = [
+        //     {
+        //         'id': 0, 'title': 'every day', tasks: [
+        //             {"title": "breakfast", "isDone": false, "priority": "low", "id": 0},
+        //             {"title": "dinner", "isDone": false, "priority": "low", "id": 1}
+        //         ]
+        //     },
+        //     {
+        //         'id': 1, 'title': 'tomorrow', tasks: [
+        //             {"title": "sport", "isDone": false, "priority": "low", "id": 2},
+        //             {"title": "reading", "isDone": false, "priority": "low", "id": 3}
+        //         ]
+        //     },
+        //
+        // ]
+
+        axios.get("https://social-network.samuraijs.com/api/1.1/todo-lists",
+            {withCredentials: true})
+            .then(res => {
+                debugger
+                console.log(res.data);
+                this.props.setTodolists(res.data)
+            });
+
+
     }
 
     render = () => {
@@ -58,6 +84,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addTodolist: (newTodolist) => {
             dispatch(addTodolistAC(newTodolist))
+        },
+        setTodolists: (todolists) => {
+            const action = setTodolistsAC(todolists)
+            dispatch(action)
         },
 
 

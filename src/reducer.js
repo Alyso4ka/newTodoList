@@ -3,23 +3,10 @@ export const DELETE_TODOLIST = 'TodoAPP/Todolist/DELETE-TODOLIST';
 export const DELETE_TASK = 'TodoAPP/Todolist/DELETE-TASK';
 export const ADD_TASK = 'TodoAPP/Todolist/ADD-TASK';
 export const CHANGE_TASK = 'TodoAPP/Todolist/CHANGE-TASK';
+export const SET_TODOLISTS = 'TodoAPP/Todolist/SET_TODOLISTS';
 
 const initialState = {
-    todolists: [
-        {
-            'id': 0, 'title': 'every day', tasks: [
-                {"title": "breakfast", "isDone": false, "priority": "low", "id": 0},
-                {"title": "dinner", "isDone": false, "priority": "low", "id": 1}
-            ]
-        },
-        {
-            'id': 1, 'title': 'tomorrow', tasks: [
-                {"title": "sport", "isDone": false, "priority": "low", "id": 2},
-                {"title": "reading", "isDone": false, "priority": "low", "id": 3}
-            ]
-        },
-
-    ]
+    todolists: []
 }
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -97,6 +84,11 @@ export const reducer = (state = initialState, action) => {
                     }
                 })
             }
+        case SET_TODOLISTS:
+            return {
+                ...state,
+                todolists: action.todolists.map()
+            }
     }
 
 
@@ -141,3 +133,5 @@ export const deleteTaskAC = (taskId, todolistId) => {
         todolistId: todolistId
     };
 }
+
+export const setTodolistsAC = (todolists) => ({type: SET_TODOLISTS, todolists})
