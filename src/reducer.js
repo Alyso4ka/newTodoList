@@ -1,137 +1,111 @@
-export const ADD_TODOLIST = 'TodoAPP/Todolist/ADD-TODOLIST';
-export const DELETE_TODOLIST = 'TodoAPP/Todolist/DELETE-TODOLIST';
-export const DELETE_TASK = 'TodoAPP/Todolist/DELETE-TASK';
-export const ADD_TASK = 'TodoAPP/Todolist/ADD-TASK';
-export const CHANGE_TASK = 'TodoAPP/Todolist/CHANGE-TASK';
-export const SET_TODOLISTS = 'TodoAPP/Todolist/SET_TODOLISTS';
+export const ADD_TODOLIST = "TodoList/Reducer/ADD-TODOLIST";
+export const DELETE_TODOLIST = "TodoList/Reducer/DELETE-TODOLIST";
+export const DELETE_TASK = "TodoList/Reducer/DELETE-TASK";
+export const UPDATE_TODOLIST_TITLE = "TodoList/Reducer/UPDATE_TODOLIST_TITLE";
+export const ADD_TASK = "TodoList/Reducer/ADD-TASK";
+export const SET_TASKS = "TodoList/Reducer/SET_TASKS";
+export const UPDATE_TASK = "TodoList/Reducer/UPDATE-TASK";
+export const SET_TODOLISTS = "TodoList/Reducer/SET_TODOLISTS";
 
 const initialState = {
     todolists: []
-}
-export const reducer = (state = initialState, action) => {
+};
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_TODOLIST:
-            let newTodoList = {
-                id: (new Date()).getTime(),
-                title: action.newTitle,
-                tasks: []
-            }
+        case SET_TASKS:
             return {
                 ...state,
-                todolists: [newTodoList, ...state.todolists]
-            }
-        case ADD_TASK:
-
-            let newTask = {
-                title: action.newText,
-                isDone: false,
-                priority: "low",
-                id: (new Date()).getTime(),
-            };
-
-            return {
-                ...state,
-                todolists: state.todolists.map(t => {
-                    if (action.todolistId == t.id) {
-                        return {
-                            ...t,
-                            tasks: [newTask, ...t.tasks]
-                        }
+                todolists: state.todolists.map(tl => {
+                    if (tl.id !== action.todolistId) {
+                        return tl;
                     } else {
-                        return t;
+                        return {...tl, tasks: action.tasks}
                     }
                 })
-
-            }
-
-            return state;
-        case CHANGE_TASK:
-
-            return {
-                ...state,
-                todolists: state.todolists.map(t => {
-                    let task = t.tasks.find(t => t.id == action.taskId)
-                    if (task == null) return t
-                    else {
-                        return {
-                            ...t,
-                            tasks: t.tasks.map(t => {
-                                if (t.id != action.taskId) return t;
-                                else return {
-                                    ...t,
-                                    ...action.delta
-                                }
-                            })
-
-                        }
-                    }
-
-                })
-            }
-        case DELETE_TODOLIST:
-            return {
-                ...state,
-                todolists: state.todolists.filter(t => t.id != action.id)
-            }
-        case DELETE_TASK:
-            return {
-                ...state,
-                todolists: state.todolists.map(t => {
-                    if (t.id != action.todolistId) return t;
-                    else return {
-                        ...t,
-                        tasks: t.tasks.filter(t => t.id != action.taskId)
-                    }
-                })
-            }
+            };
         case SET_TODOLISTS:
             return {
                 ...state,
-                todolists: action.todolists.map()
-            }
+                todolists: action.todolists.map(tl => ({...tl, tasks: []}))
+            };
+        case ADD_TODOLIST:
+            return {
+                ...state,
+                todolists: [action.newTodolist, ...state.todolists]
+            };
+        case DELETE_TODOLIST:
+            return {
+                ...state,
+                todolists: state.todolists.filter(tl => tl.id !== action.todolistId)
+            };
+        case UPDATE_TODOLIST_TITLE:
+            return {
+                ...state,
+                todolists: state.todolists.map(tl => {
+                    if (tl.id !== action.todolistId) return tl;
+                    else return {...tl, title: action.title}
+                })
+            };
+        case DELETE_TASK:
+            return {
+                ...state,
+                todolists: state.todolists.map(tl => {
+                    if (tl.id === action.todolistId) {
+                        return {
+                            ...tl,
+                            tasks: tl.tasks.filter(t => t.id !== action.taskId)
+                        }
+                    } else {
+                        return tl
+                    }
+                })
+            };
+        case ADD_TASK:
+            return {
+                ...state,
+                todolists: state.todolists.map(tl => {
+                    if (tl.id === action.todolistId) {
+                        return {...tl, tasks: [action.newTask, ...tl.tasks]}
+                    } else {
+                        return tl
+                    }
+                })
+            };
+        case UPDATE_TASK:
+            return {
+                ...state,
+                todolists: state.todolists.map(tl => {
+                    if (tl.id === action.todolistId) {
+                        return {
+                            ...tl,
+                            tasks: tl.tasks.map(t => {
+                                if (t.id !== action.taskId) {
+                                    return t;
+                                } else {
+                                    return {...t, ...action.obj};
+                                }
+                            })
+                        }
+                    } else {
+                        return tl
+                    }
+                })
+            };
+
+        default:
+            return state
     }
+};
 
+export default reducer;
 
-    return state;
-}
-
-export const addTodolistAC = (todolist) => {
-    return{
-        type: ADD_TODOLIST,
-        newTodolist: todolist
-    };
-}
-
-export const addTaskAC = (newTitle, todolistId) => {
-    return {
-        type: ADD_TASK,
-        newText: newTitle,
-        todolistId: todolistId
-
-    };
-}
-
-export const changeTaskAC = (taskId, obj) => {
-    return {
-        type: CHANGE_TASK,
-        taskId: taskId,
-        delta: obj
-    };
-}
-
-export const deleteTodolistAC = (id) => {
-    return {
-        type: DELETE_TODOLIST,
-        id: id
-    };
-}
-
-export const deleteTaskAC = (taskId, todolistId) => {
-    return {
-        type: DELETE_TASK,
-        taskId: taskId,
-        todolistId: todolistId
-    };
-}
-
-export const setTodolistsAC = (todolists) => ({type: SET_TODOLISTS, todolists})
+// Action creators
+export const updateTaskAC = (taskId, obj, todolistId) => ({type: UPDATE_TASK, taskId, obj, todolistId});
+export const deleteTodolistAC = (todolistId) => ({type: DELETE_TODOLIST, todolistId: todolistId});
+export const deleteTaskAC = (todolistId, taskId) => ({type: DELETE_TASK, todolistId, taskId});
+export const updateTodolistTitleAC = (todolistId, title) => ({type: UPDATE_TODOLIST_TITLE, todolistId, title});
+export const addTaskAC = (newTask, todolistId) => ({type: ADD_TASK, newTask, todolistId});
+export const setTasksAC = (tasks, todolistId) => ({type: SET_TASKS, tasks, todolistId});
+export const addTodolistAC = (newTodolist) => ({type: ADD_TODOLIST, newTodolist: newTodolist});
+export const setTodolistsAC = (todolists) => ({type: SET_TODOLISTS, todolists: todolists});

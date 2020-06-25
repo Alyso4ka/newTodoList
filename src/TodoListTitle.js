@@ -1,40 +1,42 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {DELETE_TODOLIST, deleteTodolistAC} from "./reducer";
-
-
+import './App.css';
 
 class TodoListTitle extends React.Component {
-    onDelete = () => {
-        {this.props.deleteTodolist(this.props.id)}
-    }
 
-    render = () => {
-
-
-        return <h3 className="todoList-header__title">
-            {this.props.title}
-            <button onClick={this.onDelete}>x</button>
-        </h3>
-
+    state = {
+        editMode: false,
+        title: this.props.title
     };
 
-}
+    onTitleChanged = (e) => {
+        this.setState({title: e.currentTarget.value});
+    };
 
+    deactivateEditMode = () => {
+        this.setState({editMode: false});
+        this.props.updateTitle(this.state.title);
+    };
 
-const mapStateToProps = (state) => {
-    return {}
-}
+    activateEditMode = () => {
+        this.setState({editMode: true});
+    };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteTodolist: (id) => {
-            dispatch(deleteTodolistAC(id))
-        },
-
+    render = () => {
+        return (
+            <>
+                {
+                    this.state.editMode
+                        ? <input value={this.state.title}
+                                 autoFocus={true}
+                                 onBlur={this.deactivateEditMode}
+                                 onChange={this.onTitleChanged}
+                        />
+                        : <h3 className="todoList-header__title" onClick={this.activateEditMode}>{this.props.title}</h3>
+                }
+            </>
+        );
     }
 }
 
+export default TodoListTitle;
 
-const ConnectedTodoListTitle = connect(mapStateToProps, mapDispatchToProps)(TodoListTitle);
-export default ConnectedTodoListTitle;

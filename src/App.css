@@ -7,15 +7,6 @@
   width: 300px;
 }
 
-.error {
-  border-color: red;
-}
-
-.todoList {
-  width: 500px;
-  margin: 0 auto;
-}
-
 .todoList > div {
   padding: 10px;
 }
@@ -24,10 +15,20 @@
 
 }
 
+.todoList-task.done {
+  opacity: 0.5;
+}
+
 .filter-active {
   background-color: blue;
 }
 
-.todoList-task.done {
-  opacity: 0.5;
+.error {
+  border-color: red;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
