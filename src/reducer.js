@@ -1,3 +1,5 @@
+import {api} from "./api";
+
 export const ADD_TODOLIST = "TodoList/Reducer/ADD-TODOLIST";
 export const DELETE_TODOLIST = "TodoList/Reducer/DELETE-TODOLIST";
 export const DELETE_TASK = "TodoList/Reducer/DELETE-TASK";
@@ -109,3 +111,13 @@ export const addTaskAC = (newTask, todolistId) => ({type: ADD_TASK, newTask, tod
 export const setTasksAC = (tasks, todolistId) => ({type: SET_TASKS, tasks, todolistId});
 export const addTodolistAC = (newTodolist) => ({type: ADD_TODOLIST, newTodolist: newTodolist});
 export const setTodolistsAC = (todolists) => ({type: SET_TODOLISTS, todolists: todolists});
+
+
+export const getTodolistsTC = () => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.getTodolists().then(res => {
+        dispatch(setTodolistsAC(res.data));
+    });
+}

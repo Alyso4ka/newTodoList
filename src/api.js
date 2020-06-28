@@ -26,6 +26,7 @@ export const api = {
     createTask(newTaskTitle, todolistId) {
         return instance.post(`/${todolistId}/tasks`, {title: newTaskTitle});
     },
+
     updateTask(taskId, todolistId, task) {
         return instance.put(`/${todolistId}/tasks/${taskId}`,  task);
     },
