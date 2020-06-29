@@ -3,7 +3,7 @@ import './App.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
 import {connect} from "react-redux";
-import {addTodolistAC, setTodolistsAC, getTodolistsTC} from "./reducer";
+import {addTodolistAC, setTodolistsAC, getTodolistsTC, createTodolistTC} from "./reducer";
 import {api} from "./api";
 
 class App extends React.Component {
@@ -23,11 +23,7 @@ class App extends React.Component {
     };
 
     addTodoList = (title) => {
-        api.createTodolist(title)
-            .then(res => {
-                let todolist = res.data.data.item;
-                this.props.addTodolist(todolist);
-            });
+        this.props.createTodolist(title);
     };
 
     render = () => {
@@ -66,6 +62,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         getTodolists: () => {
             dispatch(getTodolistsTC())
+        },
+
+        createTodolist: (title) => {
+            dispatch(createTodolistTC(title))
         }
     }
 };

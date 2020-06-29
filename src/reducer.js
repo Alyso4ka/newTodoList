@@ -11,6 +11,7 @@ export const SET_TODOLISTS = "TodoList/Reducer/SET_TODOLISTS";
 
 const initialState = {
     todolists: []
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -121,3 +122,16 @@ export const getTodolistsTC = () => (dispatch, getState) => {
         dispatch(setTodolistsAC(res.data));
     });
 }
+
+export const  createTodolistTC = (title) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.createTodolist(title)
+        .then(res => {
+            let todolist = res.data.data.item;
+            dispatch(addTodolistAC(todolist));
+        });
+}
+
+
