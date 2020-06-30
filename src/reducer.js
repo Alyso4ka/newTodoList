@@ -109,7 +109,7 @@ export const deleteTodolistAC = (todolistId) => ({type: DELETE_TODOLIST, todolis
 export const deleteTaskAC = (todolistId, taskId) => ({type: DELETE_TASK, todolistId, taskId});
 export const updateTodolistTitleAC = (todolistId, title) => ({type: UPDATE_TODOLIST_TITLE, todolistId, title});
 export const addTaskAC = (newTask, todolistId) => ({type: ADD_TASK, newTask, todolistId});
-export const setTasksAC = (tasks, todolistId) => ({type: SET_TASKS, tasks, todolistId});
+const setTasksAC = (tasks, todolistId) => ({type: SET_TASKS, tasks, todolistId});
 export const addTodolistAC = (newTodolist) => ({type: ADD_TODOLIST, newTodolist: newTodolist});
 export const setTodolistsAC = (todolists) => ({type: SET_TODOLISTS, todolists: todolists});
 
@@ -131,6 +131,17 @@ export const  createTodolistTC = (title) => (dispatch, getState) => {
         .then(res => {
             let todolist = res.data.data.item;
             dispatch(addTodolistAC(todolist));
+        });
+}
+
+export const  loadTasksThunkCreator = (todolistId) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.getTasks(todolistId)
+        .then(res => {
+            let action = setTasksAC(res.data.items, todolistId)
+     dispatch(action)
         });
 }
 

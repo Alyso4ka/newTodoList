@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="1 THUNK GETTODOLISTS">
+    <list default="true" id="883340e7-e310-405d-b739-69b58bd3ce70" name="Default Changelist" comment="2 THUNK createTodolistTC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodoList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +114,9 @@
       <workItem from="1593096326664" duration="99000" />
       <workItem from="1593096465645" duration="2140000" />
       <workItem from="1593335296762" duration="3275000" />
-      <workItem from="1593418185698" duration="4968000" />
+      <workItem from="1593418185698" duration="5127000" />
+      <workItem from="1593436690825" duration="37000" />
+      <workItem from="1593505733349" duration="2460000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring todolist #5">
       <created>1588233924432</created>
@@ -256,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593338306091</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="2 THUNK createTodolistTC">
+      <created>1593423961518</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1593423961551</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,13 +299,14 @@
     <MESSAGE value="axios" />
     <MESSAGE value="12 lesson" />
     <MESSAGE value="1 THUNK GETTODOLISTS" />
-    <option name="LAST_COMMIT_MESSAGE" value="1 THUNK GETTODOLISTS" />
+    <MESSAGE value="2 THUNK createTodolistTC" />
+    <option name="LAST_COMMIT_MESSAGE" value="2 THUNK createTodolistTC" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1593338591358">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1593436728796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593338591358" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593436728796" />
     <state x="1326" y="416" key="Github.ShareDialog" timestamp="1588149506900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -328,7 +338,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/TodoList.js</url>
-          <line>75</line>
+          <line>81</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -353,8 +363,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/store.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/TodoList.js</url>
+          <line>41</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/TodoList.js</url>
+          <line>59</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/TodoList.js</url>
+          <line>67</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
