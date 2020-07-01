@@ -1,4 +1,5 @@
 import {api} from "./api";
+import {combineReducers} from "redux";
 
 export const ADD_TODOLIST = "TodoList/Reducer/ADD-TODOLIST";
 export const DELETE_TODOLIST = "TodoList/Reducer/DELETE-TODOLIST";
@@ -123,7 +124,7 @@ export const getTodolistsTC = () => (dispatch, getState) => {
     });
 }
 
-export const  createTodolistTC = (title) => (dispatch, getState) => {
+export const createTodolistTC = (title) => (dispatch, getState) => {
     // 1. api getTodolists
     // 2. dispatch(action)
 
@@ -134,15 +135,62 @@ export const  createTodolistTC = (title) => (dispatch, getState) => {
         });
 }
 
-export const  loadTasksThunkCreator = (todolistId) => (dispatch, getState) => {
+export const loadTasksThunkCreator = (todolistId) => (dispatch, getState) => {
     // 1. api getTodolists
     // 2. dispatch(action)
 
     api.getTasks(todolistId)
         .then(res => {
             let action = setTasksAC(res.data.items, todolistId)
-     dispatch(action)
+            dispatch(action)
         });
 }
+
+
+export const addTaskThunkCreator = (title, todolistId) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.createTask(title, todolistId).then(res => {
+
+        let action = addTaskAC(res.data.data.item, todolistId)
+        dispatch(action);
+    });
+}
+
+export const updateTaskThunkCreator = (todolistId, task, delta) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.updateTask(todolistId, task, delta)
+        .then(res => {
+            let action = updateTaskAC(task.id, delta, todolistId)
+            dispatch(action)
+        })
+}
+
+export const deleteTodolistThunkCreator = (todolistId) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+    api.deleteTodolist(todolistId)
+        .then(res => {
+            const action = deleteTodolistAC(todolistId)
+            dispatch(action);
+        });
+}
+
+export const deleteTaskThunkCreator = (todolistId, taskId) => (dispatch, getState) => {
+    // 1. api getTodolists
+    // 2. dispatch(action)
+
+
+    api.deleteTask(todolistId, taskId)
+        .then(res => {
+            const action = deleteTaskAC(todolistId, taskId);
+            dispatch(action);
+        });
+}
+
 
 
